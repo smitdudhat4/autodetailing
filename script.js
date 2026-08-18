@@ -17,10 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
             
             // Animate hamburger to X
             const spans = hamburger.querySelectorAll('span');
@@ -32,6 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 spans[0].style.transform = 'none';
                 spans[1].style.opacity = '1';
                 spans[2].style.transform = 'none';
+            }
+        });
+    }
+
+    // Close overlay when clicking on it
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                hamburger.click();
             }
         });
     }
