@@ -68,19 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
             faqItems.forEach(otherItem => {
                 if (otherItem !== item && otherItem.classList.contains('active')) {
                     otherItem.classList.remove('active');
-                    otherItem.querySelector('.faq-answer').style.maxHeight = null;
                 }
             });
             
             // Toggle current item
             item.classList.toggle('active');
-            const answer = item.querySelector('.faq-answer');
-            
-            if (item.classList.contains('active')) {
-                answer.style.maxHeight = answer.scrollHeight + "px";
-            } else {
-                answer.style.maxHeight = null;
-            }
         });
     });
 

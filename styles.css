@@ -13,6 +13,7 @@
     
     --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     --spacing-section: 120px;
+    color-scheme: dark;
 }
 
 * {
@@ -316,7 +317,7 @@ p {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -378,7 +379,7 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     align-items: stretch;
 }
@@ -624,7 +625,7 @@ p {
     max-width: 1400px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
 }
 
@@ -684,7 +685,7 @@ p {
     max-width: 1400px;
     margin: 0 auto 4rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 
@@ -763,6 +764,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     transition: var(--transition);
 }
 
@@ -782,15 +784,25 @@ p {
 }
 
 .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    grid-template-rows: 1fr;
 }
 
 .faq-answer-inner {
-    padding-bottom: 1.5rem;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: padding-bottom 0.4s ease;
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+.faq-item.active .faq-answer-inner {
+    padding-bottom: 1.5rem;
 }
 
 /* CTA Section */
@@ -943,7 +955,6 @@ p {
 }
 
 .contact-form input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
     cursor: pointer;
 }
 
